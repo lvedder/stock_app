@@ -23,6 +23,7 @@
     <orderEntry type="library" scope="PROVIDED" name="netrc (v0.11.0, rbenv: 2.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="quandl (v1.1.0, rbenv: 2.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack (v2.0.6, rbenv: 2.4.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rake (v12.3.2, rbenv: 2.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rest-client (v2.0.2, rbenv: 2.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rspec (v3.8.0, rbenv: 2.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rspec-core (v3.8.0, rbenv: 2.4.4) [gem]" level="application" />
