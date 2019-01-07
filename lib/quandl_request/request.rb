@@ -6,6 +6,7 @@ Dotenv.load('../.env')
 
 class Request
   attr_reader :stock_ticker, :start_date
+  attr_accessor :end_date
 
   def initialize(stock_ticker, start_date, end_date = Date.today.to_s)
     Quandl::ApiConfig.api_version = ENV['QUANDL_API_VERSION']
