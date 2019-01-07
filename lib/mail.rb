@@ -1,6 +1,7 @@
 require 'net/smtp'
 require 'mailjet'
 require 'dotenv'
+require_relative '../lib/quandl_cli'
 
 Dotenv.load('../.env')
 
@@ -12,9 +13,9 @@ end
 
 email = {from_email: ENV['EMAIL_ADDRESS'],
          from_name: 'Lamina',
-         subject: 'Hello',
+         subject: 'HQ Stock Market App: Your request results',
          text_part: 'Hi',
-         recipients: [{email: 'lamina-vedder@msn.com'}]}
+         recipients: [{email: @email}]}
 
 test = Mailjet::Send.create(email)
 
