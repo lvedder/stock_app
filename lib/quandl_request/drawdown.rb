@@ -2,8 +2,10 @@ require_relative 'request'
 
 class Drawdown
   attr_reader :peak, :trough
-  def initialize(peak, trough)
 
+  def initialize(peak, trough)
+    @peak = peak
+    @trough = trough
   end
 
   def calculate_drawdown
@@ -11,6 +13,6 @@ class Drawdown
   end
 
   def output
-    puts "#{(calculate_drawdown * 100).round(2)}%"
+    puts "Maximum Drawdown: #{(calculate_drawdown * 100).round(2)}%"
   end
 end

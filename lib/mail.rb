@@ -5,19 +5,29 @@ require_relative '../lib/quandl_cli'
 
 Dotenv.load('../.env')
 
-Mailjet.configure do |config|
-  config.api_key = ENV['MAILJET_API_KEY']
-  config.secret_key = ENV['MAILJET_SECRET_KEY']
-  config.default_from = ENV['EMAIL_ADDRESS']
-end
+class Mail
+  attr_accessor :customer_email
 
-email = {from_email: ENV['EMAIL_ADDRESS'],
-         from_name: 'Lamina',
-         subject: 'HQ Stock Market App: Your request results',
-         text_part: 'Hi',
-         recipients: [{email: @email}]}
+  def initialize(customer_email)
+  customer_email = customer_email
+  Mailjet.configure do |config|
+    config.api_key = ENV['MAILJET_API_KEY']
+    config.secret_key = ENV['MAILJET_SECRET_KEY']
+    config.default_from = ENV['EMAIL_ADDRESS']
+  end
 
-test = Mailjet::Send.create(email)
+  send_email(customer_email)
+  end
 
+  def send_email(recipient)
+    email = { from_email: ENV['EMAIL_ADDRESS'],
+              from_name: 'Lamina',
+              subject: 'HQ Stock Market App: Your request results',
+              text_part: 'Hi',
+              recipients: [{email: recipient}]}
+  
+    test = Mailjet::Send.create(email)
 
-p test.attributes['Sent']
+    p test.attributes['Sent']
+  end
+end 
