@@ -1,7 +1,8 @@
 require_relative 'request'
 
 class Return
-  attr_reader :start_price, :end_price
+  attr_reader :start_price, :end_price, :stock_ticker, :start_date
+  attr_accessor :end_date
 
   def initialize(stock_ticker, start_date, start_price, end_price)
     get_request(stock_ticker, start_date)
@@ -9,11 +10,11 @@ class Return
     @end_price = end_price
   end
 
-  def get_request(stock_ticker, start_date)
-    request = Request.new(stock_ticker, start_date)
+  def get_request(stock_ticker, start_date, end_date = Date.today)
+    request = Request.new(stock_ticker, start_date, end_date)
     data = request.get_data
-    start_price = data.open
-    end_price = data.close
+    @start_price = data.open
+    @end_price = data.close
   end
 
   def return_on_investment
