@@ -4,8 +4,7 @@ class Return
   attr_reader :start_price, :end_price, :stock_ticker, :start_date
   attr_accessor :end_date
 
-  def initialize(stock_ticker, start_date, start_price, end_price)
-    get_request(stock_ticker, start_date)
+  def initialize(start_price, end_price)
     @start_price = start_price
     @end_price = end_price
   end
