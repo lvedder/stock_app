@@ -1,6 +1,7 @@
 require 'date'
 require 'dotenv'
 require 'quandl'
+require_relative 'result'
 
 Dotenv.load('../.env')
 
@@ -25,5 +26,16 @@ class Request
     data = Quandl::Dataset.get("WIKI/#{stock_ticker}").data(params: params).first
     # TODO if-else-statements to display error messages in case API connection fails/calls per day exceeded
     return data
+  end
+
+  def return
+    unless get_data.nil?
+     Return.new(get_data.open, get_data.close)
+    end
+  end
+
+  def result
+    unless get_data.nil?
+    Result.new(get_data)
   end
 end
