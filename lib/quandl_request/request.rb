@@ -1,9 +1,9 @@
 require 'date'
 require 'dotenv'
 require 'quandl'
-require_relative 'result'
+# require_relative 'result'
 
-Dotenv.load('../.env')
+Dotenv.load
 
 class Request
   attr_reader :stock_ticker, :start_date
@@ -23,7 +23,7 @@ class Request
     stock_ticker = @stock_ticker
     end_date = @end_date
     params = {limit: 1, start_date: start_date, end_date: end_date}
-    data = Quandl::Dataset.get("WIKI/#{stock_ticker}").data(params: params).first
+    data = Quandl::Dataset.get("EOD/#{stock_ticker}").data(params: params).first
     # TODO if-else-statements to display error messages in case API connection fails/calls per day exceeded
     return data
   end
@@ -37,5 +37,6 @@ class Request
   def result
     unless get_data.nil?
     Result.new(get_data)
+    end
   end
 end
